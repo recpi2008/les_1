@@ -6,13 +6,27 @@
 вычислите рентабельность выручки (соотношение прибыли к выручке).
 Далее запросите численность сотрудников фирмы и определите прибыль фирмы в расчете на одного сотрудника.
 """
-
-proceeds = float(input("Введите выручку вашей фирмы:\n"))
-loss = float(input("Введите убыток Вашей фирмы:\n"))
+while True:
+    proceeds = input("Введите выручку вашей фирмы:\n")
+    if proceeds.isdigit():
+        proceeds = int(proceeds)
+        break
+    print("Вы ввели не число. Повторите ввод.")
+while True:
+    loss = input("Введите убыток вашей фирмы:\n")
+    if loss.isdigit():
+        loss = int(loss)
+        break
+    print("Вы ввели не число. Повторите ввод.")
 if proceeds > loss:
     profit = proceeds - loss
     print(f"Чистая прибыль фирмы {profit}. Рентабельность выручки {profit / proceeds:.2f}")
-    workers = int(input("Укажите количество сотрудников фирмы:\n"))
+    while True:
+        workers = input("Укажите количество сотрудников фирмы:\n")
+        if workers.isdigit():
+            workers = int(loss)
+            break
+        print("Вы ввели не число. Повторите ввод.")
     print(f"Прибыль фирмы в расчете на одного сотрудника {profit / workers:.2f}")
 elif proceeds == loss:
     print("Фирма работает в ноль")
