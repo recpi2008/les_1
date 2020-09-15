@@ -14,3 +14,10 @@ for el in range(user_str.count(' ') + 1):
     else:
         print(f" {a} {user_word [el] [0:10]}")
         a += 1
+#fast decision from teacher
+"""
+user_word = input()
+
+for idx, word in enumerate(user_word.split(" ")):
+    print(f"{idx}:{word[:10]}")
+"""

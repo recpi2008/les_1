@@ -19,3 +19,18 @@ elif 6 <= month <= 8:
     print(f"{month} месяц это - {seasons_dict.get(3)}")
 elif 9 <= month <= 11:
     print(f"{month} месяц это - {seasons_dict.get(4)}")
+
+"""
+#other decision from teacher
+user_month_num = 12
+seson_idx = user_month_num // 3 % 4
+for key, value in seasons_dict.items():
+    if user_month_num in value:
+        print(key)
+        break
+print(seson_idx)
+print(seasons_list[seson_idx])
+"""
+
+
+

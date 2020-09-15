@@ -26,14 +26,74 @@ num = 0
 user = None
 control = None
 while True:
-    control = input("Для добавления параметров товара нажмите 'Enter', для показа аналитики 'A'").upper()
     num += 1
-    if control == "A":
-        print(f"Аналитика о товарах")
-        for key, value in analytic_list.items():
-            print(f"{key}: {value}")
     for ask in user_template.keys():
         user = input(f"Введите '{ask}'")
         user_template[ask] = int(user) if (ask == "Цена" or ask == "Колличество") else user
         analytic_list[ask].append(user_template[ask])
     total.append((num, user_template))
+    while True:
+        next_add = input("Для добавления следующего продукта введите: да или entor, для вывода аналитики лубую клавишу\n")
+        if next_add.lower() in ("да"):
+            next_enter = next_add.lower() == "да"
+            break
+        else:
+            print(f"Аналитика о товарах")
+        for key, value in analytic_list.items():
+            print(f"{key}: {value}")
+
+
+"""
+#decision from teacher
+product_template = {
+    "Название": ("Название товара", str),
+    "Цена": ("Стоимость товара", int),
+    "Количество": ("Количество товара", int),
+    "Еденицы": ("Единицы измерения", str)
+}
+next_enter = True
+
+auto_inc = 1
+products_list = []
+
+while next_enter:
+    #словарь в который запосляем атрибуты товара
+    product = {}
+    #заполняем товар по шаблону
+    for key, value in product_template.items():
+        #цикл while True для того чтобы повторить вопрос при неверном вводе по типу
+        while True:
+            user_value = input(f"{value[0]}")
+            try:
+                user_value = value[1](user_value) #int (user_value)
+            except ValueError as e:
+                print(f"{e} \n Не верное значение данных")
+                continue
+            product[key] = user_value
+            break
+    products_list.append((auto_inc, product))
+    auto_inc += 1
+    #проверяем нужно ли ещу вводить товар
+    while True:
+        next_add = input("Добавить еще продукт? Да/Нет\n")
+        if next_add.lower() in ("Да","Нет"):
+            next_enter = next_add.lower() == "Да"
+            break
+        else:
+            print("Неверный ввод. Повторите")
+print(products_list)
+
+product_alalytics = {}
+# собираем словарь аналитики
+for key in product_template:
+    resalt = []
+    for itm in products_list:
+        resalt.append(itm[1][key])
+    product_alalytics[key] = resalt
+
+print(product_alalytics)
+
+
+"""
+
+
